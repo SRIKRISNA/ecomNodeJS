@@ -41,6 +41,15 @@ app.get("/product", (req,res)=>{
     })
 })
 
+//get orders
+app.get("/orders", (req,res)=>{
+    orderM.find((err, result) =>{
+        if(!err)
+        res.render('order', {data:result});
+        else res.send(err);
+    })
+})
+
 //add products
 app.post('/product', (req,res)=>{
     const product = new productM({
@@ -53,6 +62,40 @@ app.post('/product', (req,res)=>{
     product.save().then(()=>{
         console.log("New Product Added")
         res.send("product added");
+    }).catch(err => {
+        console.log(err);
+        res.send(err);
+    })
+})
+
+//add customers
+app.post('/customer', (req,res)=>{
+    const customer = new customerM({
+        customer_id: req.body.customer_id,
+        customer_name: req.body.customer_name,
+        email: req.body.email,
+        balanceAmount: req.body.balanceAmount
+    })
+    customer.save().then(()=>{
+        console.log("New Customer Added")
+        res.send("customer added");
+    }).catch(err => {
+        console.log(err);
+        res.send(err);
+    })
+})
+
+//add Order
+app.post('/orders', (req,res)=>{
+    const order = new orderM({
+        customer_id: req.body.customer_id,
+        product_id: req.body.product_id,
+        product_name: req.body.product_name,
+        quantity: req.body.quantity
+    })
+    order.save().then(()=>{
+        console.log("New order generated")
+        res.send("new order generated");
     }).catch(err => {
         console.log(err);
         res.send(err);

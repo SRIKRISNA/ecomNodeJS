@@ -1,0 +1,9 @@
+.tabl{
+    border: 1px solid grey;
+}
+body{
+    background-color: aqua;
+}
+tr{
+    border: 1px solid red;
+}
