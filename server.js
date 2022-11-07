@@ -122,7 +122,7 @@ app.delete('/product:product_id', (req,res)=>{
                 res.status(200).send("product deleted")
             })
         }else{
-            res.send("product id not found")
+            res.send("product id not found");
         }
     })
 })
