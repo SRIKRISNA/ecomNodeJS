@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Info</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>product_id</td>
+            <td>product_type</td>
+            <td>product_name</td>
+            <td>product_price</td>
+            <td>Available Qunatity</td>
+        </tr>
+        <%for(let i=0; i<data.length; i++){%>
+            <tr>
+                <td><%=data[i].product_id%></td>
+                <td><%=data[i].product_type%></td>
+                <td><%=data[i].product_name%></td>
+                <td><%=data[i].product_price%></td>
+                <td><%=data[i].availableQty%></td>
+            </tr>
+       <% }%>
+    </table>
+</body>
+</html>
