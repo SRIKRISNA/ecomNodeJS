@@ -101,3 +101,28 @@ app.post('/orders', (req,res)=>{
         res.send(err);
     })
 })
+
+//update products
+app.put('/product:product_id', (req,res)=>{
+    productM.find({product_id:req.params.product_id}).then((product_id)=>{
+        if(product_id.length){
+            productM.updateOne({product_id:req.body.params.product_id}, req.body).then((proUpdate)=>{
+                res.status(200).send("product updated")
+            })
+        }else{
+            res.send("product id not found")
+        }
+    })
+})
+//delete products
+app.delete('/product:product_id', (req,res)=>{
+    productM.find({product_id:req.params.product_id}).then((product)=>{
+        if(product.length){
+            productM.deleteOne({product_id:req.body.params.product_id}, req.body).then((proDelete)=>{
+                res.status(200).send("product deleted")
+            })
+        }else{
+            res.send("product id not found")
+        }
+    })
+})
